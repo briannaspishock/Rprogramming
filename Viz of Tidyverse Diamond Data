@@ -1,0 +1,23 @@
+>library(tidyverse)
+# head()displays the columns and first several rows of data
+>head(diamonds)
+# glimpse() and str() both return summaries of each column horizontally
+>str(diamonds)
+>glimpse(diamonds)
+# colnames() returns a list of columns from your dataset
+>colnames(diamonds)
+# cleaning data
+>rename(diamonds, carat_new = carat)
+>rename(diamonds, carat_new = carat, cut_new = cut)
+# summarize uses a wide range of summary statistics 
+>summarize(diamonds, mean_carat = mean(carat))
+# building a vizualization 
+>ggplot(data = diamonds, aes(x = carat, y = price)) +
+>geom_point()
+# change the color of each point so it represents another variable
+>ggplot(data = diamonds, aes(x = carat, y = price ,color = cut)) +
+>geom_point()
+# facet_wrap() creates a different plot for each type of cut
+>ggplot(data = diamonds, aes(x = carat, y = price, color = cut)) +
+>geom_point() +
+>facet_wrap(~cut)
