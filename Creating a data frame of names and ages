@@ -1,0 +1,96 @@
+# creating a data frame for names and ages and viewing the data 
+> install.packages(tidyverse)
+Error in install.packages : object 'tidyverse' not found
+> install.packages("tidyverse")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/tidyverse_1.3.1.zip'
+Content type 'application/zip' length 429976 bytes (419 KB)
+downloaded 419 KB
+
+package ‘tidyverse’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\Rtmp6XEtJO\downloaded_packages
+> library(tidyverse)
+── Attaching packages ───────────
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.7     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1
+── Conflicts ────────────────────
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+> names <- c("Brianna", "Alex", "Lindsay", "Cody")
+> age <- c(31, 35, 34, 34)
+> people <- data.frame(names,age)
+> head(people)
+    names age
+1 Brianna  31
+2    Alex  35
+3 Lindsay  34
+4    Cody  34
+> names <- c("Brianna", "Alex", "Lindsay", "Cody")
+> age <- c(31, 35, 34, 34)
+> people <- data.frame(names,age)
+> head(people)
+    names age
+1 Brianna  31
+2    Alex  35
+3 Lindsay  34
+4    Cody  34
+> str(people)
+'data.frame':	4 obs. of  2 variables:
+ $ names: chr  "Brianna" "Alex" "Lindsay" "Cody"
+ $ age  : num  31 35 34 34
+> names <- c("Brianna", "Alex", "Lindsay", "Cody")
+> age <- c(31, 35, 34, 34)
+> people <- data.frame(names,age)
+> head(people)
+    names age
+1 Brianna  31
+2    Alex  35
+3 Lindsay  34
+4    Cody  34
+> str(people)
+'data.frame':	4 obs. of  2 variables:
+ $ names: chr  "Brianna" "Alex" "Lindsay" "Cody"
+ $ age  : num  31 35 34 34
+> names <- c("Brianna", "Alex", "Lindsay", "Cody")
+> age <- c(31, 35, 34, 34)
+> people <- data.frame(names,age)
+> head(people)
+    names age
+1 Brianna  31
+2    Alex  35
+3 Lindsay  34
+4    Cody  34
+> str(people)
+'data.frame':	4 obs. of  2 variables:
+ $ names: chr  "Brianna" "Alex" "Lindsay" "Cody"
+ $ age  : num  31 35 34 34
+> colnames(people)
+[1] "names" "age"  
+> names <- c("Brianna", "Alex", "Lindsay", "Cody")
+> age <- c(31, 35, 34, 34)
+> people <- data.frame(names,age)
+> head(people)
+    names age
+1 Brianna  31
+2    Alex  35
+3 Lindsay  34
+4    Cody  34
+> str(people)
+'data.frame':	4 obs. of  2 variables:
+ $ names: chr  "Brianna" "Alex" "Lindsay" "Cody"
+ $ age  : num  31 35 34 34
+> colnames(people)
+[1] "names" "age"  
+> mutate(people, age_in_20 = age+20)
+    names age age_in_20
+1 Brianna  31        51
+2    Alex  35        55
+3 Lindsay  34        54
+4    Cody  34        54
+> 
