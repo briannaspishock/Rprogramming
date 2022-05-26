@@ -13,11 +13,11 @@
 >summarize(diamonds, mean_carat = mean(carat))
 # building a vizualization 
 >ggplot(data = diamonds, aes(x = carat, y = price)) +
->geom_point()
+ geom_point()
 # change the color of each point so it represents another variable
 >ggplot(data = diamonds, aes(x = carat, y = price ,color = cut)) +
->geom_point()
+ geom_point()
 # facet_wrap() creates a different plot for each type of cut
 >ggplot(data = diamonds, aes(x = carat, y = price, color = cut)) +
->geom_point() +
->facet_wrap(~cut)
+ geom_point() +
+ facet_wrap(~cut)
