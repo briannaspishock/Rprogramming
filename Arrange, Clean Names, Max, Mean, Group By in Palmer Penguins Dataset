@@ -1,0 +1,376 @@
+#installing packages needed for project and adding them to library
+
+> install.packages("here")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+also installing the dependency ‘rprojroot’
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/rprojroot_2.0.3.zip'
+Content type 'application/zip' length 109113 bytes (106 KB)
+downloaded 106 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/here_1.0.1.zip'
+Content type 'application/zip' length 64121 bytes (62 KB)
+downloaded 62 KB
+
+package ‘rprojroot’ successfully unpacked and MD5 sums checked
+package ‘here’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpKe3iFT\downloaded_packages
+> library(here)
+here() starts at C:/Users/Brianna's Laptop/Documents/Google Data Analytics
+> install.packages("skimr")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+also installing the dependency ‘repr’
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/repr_1.1.4.zip'
+Content type 'application/zip' length 121685 bytes (118 KB)
+downloaded 118 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/skimr_2.1.4.zip'
+Content type 'application/zip' length 1237346 bytes (1.2 MB)
+downloaded 1.2 MB
+
+package ‘repr’ successfully unpacked and MD5 sums checked
+package ‘skimr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpKe3iFT\downloaded_packages
+> library(skimr)
+> install.packages("janitor")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+also installing the dependency ‘snakecase’
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/snakecase_0.11.0.zip'
+Content type 'application/zip' length 166747 bytes (162 KB)
+downloaded 162 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/janitor_2.1.0.zip'
+Content type 'application/zip' length 252338 bytes (246 KB)
+downloaded 246 KB
+
+package ‘snakecase’ successfully unpacked and MD5 sums checked
+package ‘janitor’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpKe3iFT\downloaded_packages
+> install.packages("janitor")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/janitor_2.1.0.zip'
+Content type 'application/zip' length 252338 bytes (246 KB)
+downloaded 246 KB
+
+package ‘janitor’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpKe3iFT\downloaded_packages
+> library(janitor)
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+> ibrary(dplyr)
+Error in ibrary(dplyr) : could not find function "ibrary"
+> library(dplyr)
+
+#installing dataset
+
+> install.packages("palmerpenguins")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/palmerpenguins_0.1.0.zip'
+Content type 'application/zip' length 3003016 bytes (2.9 MB)
+downloaded 2.9 MB
+
+package ‘palmerpenguins’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpKe3iFT\downloaded_packages
+> library(palmerpenguins)
+> skim_without_charts(palmerpenguins)
+Error in skim_without_charts(palmerpenguins) : 
+  object 'palmerpenguins' not found
+> skim_without_charts(penguins)
+── Data Summary ────────────────────────
+                           Values  
+Name                       penguins
+Number of rows             344     
+Number of columns          8       
+_______________________            
+Column type frequency:             
+  factor                   3       
+  numeric                  5       
+________________________           
+Group variables            None    
+
+── Variable type: factor ────────────────────────────────
+  skim_variable n_missing complete_rate ordered n_unique
+1 species               0         1     FALSE          3
+2 island                0         1     FALSE          3
+3 sex                  11         0.968 FALSE          2
+  top_counts                 
+1 Ade: 152, Gen: 124, Chi: 68
+2 Bis: 168, Dre: 124, Tor: 52
+3 mal: 168, fem: 165         
+
+── Variable type: numeric ───────────────────────────────
+  skim_variable     n_missing complete_rate   mean
+1 bill_length_mm            2         0.994   43.9
+2 bill_depth_mm             2         0.994   17.2
+3 flipper_length_mm         2         0.994  201. 
+4 body_mass_g               2         0.994 4202. 
+5 year                      0         1     2008. 
+       sd     p0    p25    p50    p75   p100
+1   5.46    32.1   39.2   44.4   48.5   59.6
+2   1.97    13.1   15.6   17.3   18.7   21.5
+3  14.1    172    190    197    213    231  
+4 802.    2700   3550   4050   4750   6300  
+5   0.818 2007   2007   2008   2009   2009  
+> glimpse(penguins)
+Rows: 344
+Columns: 8
+$ species           <fct> Adelie, Adelie, Adelie, Adeli…
+$ island            <fct> Torgersen, Torgersen, Torgers…
+$ bill_length_mm    <dbl> 39.1, 39.5, 40.3, NA, 36.7, 3…
+$ bill_depth_mm     <dbl> 18.7, 17.4, 18.0, NA, 19.3, 2…
+$ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, …
+$ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3…
+$ sex               <fct> male, female, female, NA, fem…
+$ year              <int> 2007, 2007, 2007, 2007, 2007,…
+> head(penguins)
+# A tibble: 6 × 8
+  species island    bill_length_mm bill_depth_mm
+  <fct>   <fct>              <dbl>         <dbl>
+1 Adelie  Torgersen           39.1          18.7
+2 Adelie  Torgersen           39.5          17.4
+3 Adelie  Torgersen           40.3          18  
+4 Adelie  Torgersen           NA            NA  
+5 Adelie  Torgersen           36.7          19.3
+6 Adelie  Torgersen           39.3          20.6
+# … with 4 more variables: flipper_length_mm <int>,
+#   body_mass_g <int>, sex <fct>, year <int>
+> penguins %>%
++   select(species)
+# A tibble: 344 × 1
+   species
+   <fct>  
+ 1 Adelie 
+ 2 Adelie 
+ 3 Adelie 
+ 4 Adelie 
+ 5 Adelie 
+ 6 Adelie 
+ 7 Adelie 
+ 8 Adelie 
+ 9 Adelie 
+10 Adelie 
+# … with 334 more rows
+> penguins %>%
++   select(-species)
+# A tibble: 344 × 7
+   island   bill_length_mm bill_depth_mm flipper_length_…
+   <fct>             <dbl>         <dbl>            <int>
+ 1 Torgers…           39.1          18.7              181
+ 2 Torgers…           39.5          17.4              186
+ 3 Torgers…           40.3          18                195
+ 4 Torgers…           NA            NA                 NA
+ 5 Torgers…           36.7          19.3              193
+ 6 Torgers…           39.3          20.6              190
+ 7 Torgers…           38.9          17.8              181
+ 8 Torgers…           39.2          19.6              195
+ 9 Torgers…           34.1          18.1              193
+10 Torgers…           42            20.2              190
+# … with 334 more rows, and 3 more variables:
+#   body_mass_g <int>, sex <fct>, year <int>
+> penguins %>% 
++   rename(islands_new=island)
+# A tibble: 344 × 8
+   species islands_new bill_length_mm bill_depth_mm
+   <fct>   <fct>                <dbl>         <dbl>
+ 1 Adelie  Torgersen             39.1          18.7
+ 2 Adelie  Torgersen             39.5          17.4
+ 3 Adelie  Torgersen             40.3          18  
+ 4 Adelie  Torgersen             NA            NA  
+ 5 Adelie  Torgersen             36.7          19.3
+ 6 Adelie  Torgersen             39.3          20.6
+ 7 Adelie  Torgersen             38.9          17.8
+ 8 Adelie  Torgersen             39.2          19.6
+ 9 Adelie  Torgersen             34.1          18.1
+10 Adelie  Torgersen             42            20.2
+# … with 334 more rows, and 4 more variables:
+#   flipper_length_mm <int>, body_mass_g <int>,
+#   sex <fct>, year <int>
+> rename_with(penguins,toupper)
+# A tibble: 344 × 8
+   SPECIES ISLAND    BILL_LENGTH_MM BILL_DEPTH_MM
+   <fct>   <fct>              <dbl>         <dbl>
+ 1 Adelie  Torgersen           39.1          18.7
+ 2 Adelie  Torgersen           39.5          17.4
+ 3 Adelie  Torgersen           40.3          18  
+ 4 Adelie  Torgersen           NA            NA  
+ 5 Adelie  Torgersen           36.7          19.3
+ 6 Adelie  Torgersen           39.3          20.6
+ 7 Adelie  Torgersen           38.9          17.8
+ 8 Adelie  Torgersen           39.2          19.6
+ 9 Adelie  Torgersen           34.1          18.1
+10 Adelie  Torgersen           42            20.2
+# … with 334 more rows, and 4 more variables:
+#   FLIPPER_LENGTH_MM <int>, BODY_MASS_G <int>,
+#   SEX <fct>, YEAR <int>
+> rename_with(penguins,tolower)
+# A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm
+   <fct>   <fct>              <dbl>         <dbl>
+ 1 Adelie  Torgersen           39.1          18.7
+ 2 Adelie  Torgersen           39.5          17.4
+ 3 Adelie  Torgersen           40.3          18  
+ 4 Adelie  Torgersen           NA            NA  
+ 5 Adelie  Torgersen           36.7          19.3
+ 6 Adelie  Torgersen           39.3          20.6
+ 7 Adelie  Torgersen           38.9          17.8
+ 8 Adelie  Torgersen           39.2          19.6
+ 9 Adelie  Torgersen           34.1          18.1
+10 Adelie  Torgersen           42            20.2
+# … with 334 more rows, and 4 more variables:
+#   flipper_length_mm <int>, body_mass_g <int>,
+#   sex <fct>, year <int>
+
+
+> clean_names(penguins)
+# A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm
+   <fct>   <fct>              <dbl>         <dbl>
+ 1 Adelie  Torgersen           39.1          18.7
+ 2 Adelie  Torgersen           39.5          17.4
+ 3 Adelie  Torgersen           40.3          18  
+ 4 Adelie  Torgersen           NA            NA  
+ 5 Adelie  Torgersen           36.7          19.3
+ 6 Adelie  Torgersen           39.3          20.6
+ 7 Adelie  Torgersen           38.9          17.8
+ 8 Adelie  Torgersen           39.2          19.6
+ 9 Adelie  Torgersen           34.1          18.1
+10 Adelie  Torgersen           42            20.2
+# … with 334 more rows, and 4 more variables:
+#   flipper_length_mm <int>, body_mass_g <int>,
+#   sex <fct>, year <int>
+> 
+
+#arranging bill length data
+
+> penguins %>% arrange(bill_length_mm)
+# A tibble: 344 × 8
+   species island    bill_length_mm
+   <fct>   <fct>              <dbl>
+ 1 Adelie  Dream               32.1
+ 2 Adelie  Dream               33.1
+ 3 Adelie  Torgersen           33.5
+ 4 Adelie  Dream               34  
+ 5 Adelie  Torgersen           34.1
+ 6 Adelie  Torgersen           34.4
+ 7 Adelie  Biscoe              34.5
+ 8 Adelie  Torgersen           34.6
+ 9 Adelie  Torgersen           34.6
+10 Adelie  Biscoe              35  
+# … with 334 more rows, and 5 more
+#   variables: bill_depth_mm <dbl>,
+#   flipper_length_mm <int>,
+#   body_mass_g <int>, sex <fct>,
+#   year <int>
+
+#arranging bill length by descending order
+
+> penguins %>% arrange(-bill_length_mm)
+# A tibble: 344 × 8
+   species   island bill_length_mm
+   <fct>     <fct>           <dbl>
+ 1 Gentoo    Biscoe           59.6
+ 2 Chinstrap Dream            58  
+ 3 Gentoo    Biscoe           55.9
+ 4 Chinstrap Dream            55.8
+ 5 Gentoo    Biscoe           55.1
+ 6 Gentoo    Biscoe           54.3
+ 7 Chinstrap Dream            54.2
+ 8 Chinstrap Dream            53.5
+ 9 Gentoo    Biscoe           53.4
+10 Chinstrap Dream            52.8
+# … with 334 more rows, and 5 more
+#   variables: bill_depth_mm <dbl>,
+#   flipper_length_mm <int>,
+#   body_mass_g <int>, sex <fct>,
+#   year <int>
+
+#creating a new data frame with descending bill length
+
+> penguins2 <- penguins %>% arrange(-bill_length_mm)
+> View(penguins2)
+
+# using the group by, drop na, summarize and mean functions for mean bill length by island 
+
+> penguins %>% group_by(island) %>% drop_na() %>% summarize(mean_bill_length_mm = mean(bill_length_mm))
+# A tibble: 3 × 2
+  island    mean_bill_length_mm
+  <fct>                   <dbl>
+1 Biscoe                   45.2
+2 Dream                    44.2
+3 Torgersen                39.0
+
+#using the group by, drop na,summarize, and max functions for max bill length by island 
+
+> penguins %>% group_by(island) %>% drop_na() %>% summarize(max_bill_length_mm = max(bill_length_mm))
+# A tibble: 3 × 2
+  island    max_bill_length_mm
+  <fct>                  <dbl>
+1 Biscoe                  59.6
+2 Dream                   58  
+3 Torgersen               46  
+ 
+# using all above functions to show mean and max bill length by island 
+
+> penguins %>% group_by(species, island) %>% drop_na() %>% summarize(max_bl = max(bill_length_mm), mean_bl = mean(bill_length_mm))
+`summarise()` has grouped output by
+'species'. You can override using the
+`.groups` argument.
+# A tibble: 5 × 4
+# Groups:   species [3]
+  species   island    max_bl mean_bl
+  <fct>     <fct>      <dbl>   <dbl>
+1 Adelie    Biscoe      45.6    39.0
+2 Adelie    Dream       44.1    38.5
+3 Adelie    Torgersen   46      39.0
+4 Chinstrap Dream       58      48.8
+5 Gentoo    Biscoe      59.6    47.6
+
+# using the filter function to show only Adelie species penguins
+
+> penguins %>%  filter(species == "Adelie")
+# A tibble: 152 × 8
+   species island    bill_length_mm
+   <fct>   <fct>              <dbl>
+ 1 Adelie  Torgersen           39.1
+ 2 Adelie  Torgersen           39.5
+ 3 Adelie  Torgersen           40.3
+ 4 Adelie  Torgersen           NA  
+ 5 Adelie  Torgersen           36.7
+ 6 Adelie  Torgersen           39.3
+ 7 Adelie  Torgersen           38.9
+ 8 Adelie  Torgersen           39.2
+ 9 Adelie  Torgersen           34.1
+10 Adelie  Torgersen           42  
+# … with 142 more rows, and 5 more
+#   variables: bill_depth_mm <dbl>,
+#   flipper_length_mm <int>,
+#   body_mass_g <int>, sex <fct>,
+#   year <int>
+> 
