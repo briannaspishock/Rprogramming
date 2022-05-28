@@ -1,0 +1,317 @@
+title: "Lesson 3: Changing your data"
+output: html_document
+---
+
+> install.packages("tidyverse")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/tidyverse_1.3.1.zip'
+Content type 'application/zip' length 430092 bytes (420 KB)
+downloaded 420 KB
+
+package ‘tidyverse’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpwVJ8gb\downloaded_packages
+> install.packages("skimr")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/skimr_2.1.4.zip'
+Content type 'application/zip' length 1237346 bytes (1.2 MB)
+downloaded 1.2 MB
+
+package ‘skimr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpwVJ8gb\downloaded_packages
+> install.packages("janitor")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/janitor_2.1.0.zip'
+Content type 'application/zip' length 252338 bytes (246 KB)
+downloaded 246 KB
+
+package ‘janitor’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Temp\RtmpwVJ8gb\downloaded_packages
+> library(tidyverse)
+── Attaching packages ────────────────────
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.7     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1
+── Conflicts ──── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+> library(skimr)
+> library(janitor)
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+> library(readr)
+> hotel_bookings <- read_csv("hotel_bookings.csv")
+Rows: 119390 Columns: 32                                                     
+── Column specification ──────────────────
+Delimiter: ","
+chr (14): hotel, arrival_date_month, m...
+dbl (18): is_canceled, lead_time, arri...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+> View(hotel_bookings)
+> head(hotel_bookings)
+# A tibble: 6 × 32
+  hotel        is_canceled lead_time
+  <chr>              <dbl>     <dbl>
+1 Resort Hotel           0       342
+2 Resort Hotel           0       737
+3 Resort Hotel           0         7
+4 Resort Hotel           0        13
+5 Resort Hotel           0        14
+6 Resort Hotel           0        14
+# … with 29 more variables:
+#   arrival_date_year <dbl>,
+#   arrival_date_month <chr>,
+#   arrival_date_week_number <dbl>,
+#   arrival_date_day_of_month <dbl>,
+#   stays_in_weekend_nights <dbl>,
+#   stays_in_week_nights <dbl>, …
+> str(hotel_bookings)
+spec_tbl_df [119,390 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ hotel                         : chr [1:119390] "Resort Hotel" "Resort Hotel" "Resort Hotel" "Resort Hotel" ...
+ $ is_canceled                   : num [1:119390] 0 0 0 0 0 0 0 0 1 1 ...
+ $ lead_time                     : num [1:119390] 342 737 7 13 14 14 0 9 85 75 ...
+ $ arrival_date_year             : num [1:119390] 2015 2015 2015 2015 2015 ...
+ $ arrival_date_month            : chr [1:119390] "July" "July" "July" "July" ...
+ $ arrival_date_week_number      : num [1:119390] 27 27 27 27 27 27 27 27 27 27 ...
+ $ arrival_date_day_of_month     : num [1:119390] 1 1 1 1 1 1 1 1 1 1 ...
+ $ stays_in_weekend_nights       : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ stays_in_week_nights          : num [1:119390] 0 0 1 1 2 2 2 2 3 3 ...
+ $ adults                        : num [1:119390] 2 2 1 1 2 2 2 2 2 2 ...
+ $ children                      : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ babies                        : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ meal                          : chr [1:119390] "BB" "BB" "BB" "BB" ...
+ $ country                       : chr [1:119390] "PRT" "PRT" "GBR" "GBR" ...
+ $ market_segment                : chr [1:119390] "Direct" "Direct" "Direct" "Corporate" ...
+ $ distribution_channel          : chr [1:119390] "Direct" "Direct" "Direct" "Corporate" ...
+ $ is_repeated_guest             : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ previous_cancellations        : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ previous_bookings_not_canceled: num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ reserved_room_type            : chr [1:119390] "C" "C" "A" "A" ...
+ $ assigned_room_type            : chr [1:119390] "C" "C" "C" "A" ...
+ $ booking_changes               : num [1:119390] 3 4 0 0 0 0 0 0 0 0 ...
+ $ deposit_type                  : chr [1:119390] "No Deposit" "No Deposit" "No Deposit" "No Deposit" ...
+ $ agent                         : chr [1:119390] "NULL" "NULL" "NULL" "304" ...
+ $ company                       : chr [1:119390] "NULL" "NULL" "NULL" "NULL" ...
+ $ days_in_waiting_list          : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ customer_type                 : chr [1:119390] "Transient" "Transient" "Transient" "Transient" ...
+ $ adr                           : num [1:119390] 0 0 75 75 98 ...
+ $ required_car_parking_spaces   : num [1:119390] 0 0 0 0 0 0 0 0 0 0 ...
+ $ total_of_special_requests     : num [1:119390] 0 0 0 0 1 1 0 1 1 0 ...
+ $ reservation_status            : chr [1:119390] "Check-Out" "Check-Out" "Check-Out" "Check-Out" ...
+ $ reservation_status_date       : chr [1:119390] "7/1/2015" "7/1/2015" "7/2/2015" "7/2/2015" ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   hotel = col_character(),
+  ..   is_canceled = col_double(),
+  ..   lead_time = col_double(),
+  ..   arrival_date_year = col_double(),
+  ..   arrival_date_month = col_character(),
+  ..   arrival_date_week_number = col_double(),
+  ..   arrival_date_day_of_month = col_double(),
+  ..   stays_in_weekend_nights = col_double(),
+  ..   stays_in_week_nights = col_double(),
+  ..   adults = col_double(),
+  ..   children = col_double(),
+  ..   babies = col_double(),
+  ..   meal = col_character(),
+  ..   country = col_character(),
+  ..   market_segment = col_character(),
+  ..   distribution_channel = col_character(),
+  ..   is_repeated_guest = col_double(),
+  ..   previous_cancellations = col_double(),
+  ..   previous_bookings_not_canceled = col_double(),
+  ..   reserved_room_type = col_character(),
+  ..   assigned_room_type = col_character(),
+  ..   booking_changes = col_double(),
+  ..   deposit_type = col_character(),
+  ..   agent = col_character(),
+  ..   company = col_character(),
+  ..   days_in_waiting_list = col_double(),
+  ..   customer_type = col_character(),
+  ..   adr = col_double(),
+  ..   required_car_parking_spaces = col_double(),
+  ..   total_of_special_requests = col_double(),
+  ..   reservation_status = col_character(),
+  ..   reservation_status_date = col_character()
+  .. )
+ - attr(*, "problems")=<externalptr> 
+> glimpse(hotel_bookings)
+Rows: 119,390
+Columns: 32
+$ hotel                          <chr> "…
+$ is_canceled                    <dbl> 0…
+$ lead_time                      <dbl> 3…
+$ arrival_date_year              <dbl> 2…
+$ arrival_date_month             <chr> "…
+$ arrival_date_week_number       <dbl> 2…
+$ arrival_date_day_of_month      <dbl> 1…
+$ stays_in_weekend_nights        <dbl> 0…
+$ stays_in_week_nights           <dbl> 0…
+$ adults                         <dbl> 2…
+$ children                       <dbl> 0…
+$ babies                         <dbl> 0…
+$ meal                           <chr> "…
+$ country                        <chr> "…
+$ market_segment                 <chr> "…
+$ distribution_channel           <chr> "…
+$ is_repeated_guest              <dbl> 0…
+$ previous_cancellations         <dbl> 0…
+$ previous_bookings_not_canceled <dbl> 0…
+$ reserved_room_type             <chr> "…
+$ assigned_room_type             <chr> "…
+$ booking_changes                <dbl> 3…
+$ deposit_type                   <chr> "…
+$ agent                          <chr> "…
+$ company                        <chr> "…
+$ days_in_waiting_list           <dbl> 0…
+$ customer_type                  <chr> "…
+$ adr                            <dbl> 0…
+$ required_car_parking_spaces    <dbl> 0…
+$ total_of_special_requests      <dbl> 0…
+$ reservation_status             <chr> "…
+$ reservation_status_date        <chr> "…
+> colnames(hotel_bookings)
+ [1] "hotel"                         
+ [2] "is_canceled"                   
+ [3] "lead_time"                     
+ [4] "arrival_date_year"             
+ [5] "arrival_date_month"            
+ [6] "arrival_date_week_number"      
+ [7] "arrival_date_day_of_month"     
+ [8] "stays_in_weekend_nights"       
+ [9] "stays_in_week_nights"          
+[10] "adults"                        
+[11] "children"                      
+[12] "babies"                        
+[13] "meal"                          
+[14] "country"                       
+[15] "market_segment"                
+[16] "distribution_channel"          
+[17] "is_repeated_guest"             
+[18] "previous_cancellations"        
+[19] "previous_bookings_not_canceled"
+[20] "reserved_room_type"            
+[21] "assigned_room_type"            
+[22] "booking_changes"               
+[23] "deposit_type"                  
+[24] "agent"                         
+[25] "company"                       
+[26] "days_in_waiting_list"          
+[27] "customer_type"                 
+[28] "adr"                           
+[29] "required_car_parking_spaces"   
+[30] "total_of_special_requests"     
+[31] "reservation_status"            
+[32] "reservation_status_date"       
+> arrange(hotel_bookings,desc(lead_time))
+# A tibble: 119,390 × 32
+   hotel        is_canceled lead_time
+   <chr>              <dbl>     <dbl>
+ 1 Resort Hotel           0       737
+ 2 Resort Hotel           0       709
+ 3 City Hotel             1       629
+ 4 City Hotel             1       629
+ 5 City Hotel             1       629
+ 6 City Hotel             1       629
+ 7 City Hotel             1       629
+ 8 City Hotel             1       629
+ 9 City Hotel             1       629
+10 City Hotel             1       629
+# … with 119,380 more rows, and 29 more
+#   variables: arrival_date_year <dbl>,
+#   arrival_date_month <chr>,
+#   arrival_date_week_number <dbl>,
+#   arrival_date_day_of_month <dbl>,
+#   stays_in_weekend_nights <dbl>,
+#   stays_in_week_nights <dbl>, …
+> View(hotel_bookings)
+> hotel_bookings_v2 <- arrange(hotel_bookings,desc(lead_time))
+> View(hotel_bookings_v2)
+> max(hotel_bookings$lead_time)
+[1] 737
+> min(hotel_bookings$lead_time)
+[1] 0
+> mean(hotel_bookings$lead_time)
+[1] 104.0114
+> mean(hotel_bookings_v2$lead_time)
+[1] 104.0114
+> hotel_bookings_city <- filter(hotel_bookings,hotel_bookings$hotel=="City Hotel")
+> head(hotel_bookings_city)
+# A tibble: 6 × 32
+  hotel      is_canceled lead_time
+  <chr>            <dbl>     <dbl>
+1 City Hotel           0         6
+2 City Hotel           1        88
+3 City Hotel           1        65
+4 City Hotel           1        92
+5 City Hotel           1       100
+6 City Hotel           1        79
+# … with 29 more variables:
+#   arrival_date_year <dbl>,
+#   arrival_date_month <chr>,
+#   arrival_date_week_number <dbl>,
+#   arrival_date_day_of_month <dbl>,
+#   stays_in_weekend_nights <dbl>,
+#   stays_in_week_nights <dbl>, …
+> mean(hotel_bookings_city$lead_time)
+[1] 109.7357
+> hotel_summary <- 
++   hotel_bookings %>%
++   group_by(hotel) %>%
++   summarise(average_lead_time=mean(lead_time),
++             min_lead_time=min(lead_time),
++             max_lead_time=max(lead_time))
+> head(hotel_summary)
+# A tibble: 2 × 4
+  hotel    average_lead_ti… min_lead_time
+  <chr>               <dbl>         <dbl>
+1 City Ho…            110.              0
+2 Resort …             92.7             0
+# … with 1 more variable:
+#   max_lead_time <dbl>
+> 
+
+## Background for this activity
+In this activity, youâ€™ll review a scenario, and focus on manipulating and changing real data in R. You will learn more about functions you can use to manipulate your data, use statistical summaries to explore your data, and gain initial insights for your stakeholders. 
+
+Throughout this activity, you will also have the opportunity to practice writing your own code by making changes to the code chunks yourself. If you encounter an error or get stuck, you can always check the Lesson3_Change_Solutions .rmd file in the Solutions folder under Week 3 for the complete, correct code. 
+
+## The Scenario
+In this scenario, you are a junior data analyst working for a hotel booking company. You have been asked to clean a .csv file that was created after querying a database to combine two different tables from different hotels. You have already performed some basic cleaning functions on this data; this activity will focus on using functions to conduct basic data manipulation.
+
+### Practice Quiz 
+
+1. How many columns are in this dataset?
+C: 32
+
+2. The 'arrival_date_month' variable is chr or character type data.  
+A: True
+
+
+## Practice Quiz
+What is the highest lead time for a hotel booking in this dataset?
+A: 737
+
+
+## Practice Quiz 
+What is the average lead time?
+D: 104.0114
